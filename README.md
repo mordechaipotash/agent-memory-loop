@@ -275,6 +275,8 @@ The entire pipeline — scan, transcribe, summarize, speak, deliver — runs una
 
 *All auto-collected at 6:00 AM, summarized by Gemini, delivered as audio podcast by 7:08 AM. Zero human involvement.*
 
+🎧 **Listen to today's episode:** [MordeNews Daily — March 1, 2026 (MP3)](https://xsjyfneizfkbitmzbrta.supabase.co/storage/v1/object/public/podcast-audio/daily_2026-03-01.mp3)
+
 ---
 
 ## 🚀 Quick Start
