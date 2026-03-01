@@ -1,0 +1,68 @@
+# brain.yaml — agent-memory-loop configuration
+#
+# This file configures the memory loop for your agent.
+# Place it in your project root (next to STATE.json).
+
+# Where your agent's session transcripts live (JSONL files)
+sessions_dir: ~/.clawdbot/agents/main/sessions
+
+# Where daily memory notes are written
+memory_dir: ./memory
+
+# Path to STATE.json (task/decision/thread tracking)
+state_path: ./STATE.json
+
+# Where context window summaries go
+context_output: ./memory/context-windows-current.md
+
+# ── Cron Schedule ─────────────────────────────────────────────
+# Copy these to your crontab (crontab -e) or use your agent's
+# cron system (e.g., clawdbot cron add).
+#
+# Core memory loop:
+#   */15 * * * *    memory-loop run context-windows    # Short-term: 3h/24h/week summaries
+#   0 23 * * 0-4,6  memory-loop run daily-notes        # Medium-term: daily note
+#   30 23 * * 0-4,6 memory-loop run consolidation      # Medium-term: update STATE.json
+#   0 22 * * 5      memory-loop sweep                  # Weekly: find stale items
+#
+# README status (optional):
+#   0 * * * *       ./update-readme.sh                 # Hourly: update live status table
+#
+# Extended (if you have Brain MCP or similar):
+#   5 * * * *       brain-sync-hourly                  # Sessions → parquet
+#   0 3 * * *       brain-sync-unified                 # All sources + embeddings
+#   15 3 * * *      brain-summary-pipeline             # New convos → structured summaries
+#   30 2 * * *      github-sync                        # GitHub repos + commits
+
+# ── Timezone ──────────────────────────────────────────────────
+# All cron times are in this timezone
+timezone: Asia/Jerusalem
+
+# ── Context Windows ───────────────────────────────────────────
+context_windows:
+  windows: ["3h", "24h", "week"]
+  max_topic_words: 10
+  max_decisions: 5
+  tail_lines: 500  # Lines to read from each session file
+
+# ── Staleness ─────────────────────────────────────────────────
+# Default staleAfterDays for new tasks (override per-task)
+default_stale_days: 7
+
+# ── Jobs to Monitor (for README status table) ────────────────
+jobs:
+  - name: context-windows
+    schedule: "*/15 * * * *"
+    purpose: "3h/24h/week context summaries"
+
+  - name: daily-notes
+    schedule: "0 23 * * 0-4,6"
+    purpose: "Write memory/YYYY-MM-DD.md"
+
+  - name: nightly-consolidation
+    schedule: "30 23 * * 0-4,6"
+    purpose: "Update STATE.json"
+
+  - name: weekly-sweep
+    schedule: "0 22 * * 5"
+    purpose: "Find stale items"

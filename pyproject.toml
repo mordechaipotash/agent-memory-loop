@@ -1,0 +1,62 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agent-memory-loop"
+version = "0.1.0"
+description = "Your AI agent has amnesia. This fixes it."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [
+    { name = "Mordechai Potash", email = "mordechai@mordechaipotash.com" },
+]
+keywords = [
+    "ai",
+    "agent",
+    "memory",
+    "llm",
+    "cron",
+    "state-management",
+    "context-windows",
+    "cognitive-prosthetic",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries",
+]
+dependencies = [
+    "click>=8.0",
+]
+
+[project.optional-dependencies]
+yaml = ["pyyaml>=6.0"]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/mordechaipotash/agent-memory-loop"
+Repository = "https://github.com/mordechaipotash/agent-memory-loop"
+Issues = "https://github.com/mordechaipotash/agent-memory-loop/issues"
+
+[project.scripts]
+memory-loop = "agent_memory_loop.cli:main"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
