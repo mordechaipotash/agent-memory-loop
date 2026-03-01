@@ -263,6 +263,18 @@ One of the podcast segments captured this moment — WorldofAI covering the agen
 
 The entire pipeline — scan, transcribe, summarize, speak, deliver — runs unattended as cron jobs. No human intervention. That's `agent-memory-loop` in action.
 
+### Today's actual news feed (March 1, 2026 — from Supabase):
+
+| | Story | Source | Why it matters |
+|---|---|---|---|
+| 🔴 | **Anthropic Refuses Pentagon $200M Contract** — CEO Dario Amodei publicly refused to loosen Claude safety restrictions for military use. First major AI lab to reject a direct government ultimatum. | AI Blueprint | AI safety vs. capability tension — the defining question of 2026 |
+| 💼 | **Jack Dorsey Replaces ~4K Block Employees with AI** — Block's internal AI agent saves 8-10 hrs/week per worker. Stock soared 20%+. | The Rundown | The AI tsunami hitting white-collar jobs — at scale, in public |
+| 🎭 | **Perplexity Computer: 19-Model Orchestration for $200/mo** — Deploys specialized sub-agents with independent sandboxed environments. Claude 4.6 + GPT-5.2 + Gemini orchestrated together. | AI Breakfast | Validates the "orchestra conductor" architecture — multiple AI models, one system |
+| 🎨 | **Google Nano Banana 2: #1 Image Gen at Half the Cost** — Reclaims leaderboard top. 512px to 4K, $0.067 per 1K images. | The Rundown AI | Cost collapse in image generation — high-volume workflows now economically viable |
+| 🌐 | **World Labs Raises $1B for Spatial AI** — Fei-Fei Li's startup backed by Nvidia, AMD, Autodesk. 3D world models for robotics. | AI Blueprint | The next frontier after language: spatial reasoning |
+
+*All auto-collected at 6:00 AM, summarized by Gemini, delivered as audio podcast by 7:08 AM. Zero human involvement.*
+
 ---
 
 ## 🚀 Quick Start
