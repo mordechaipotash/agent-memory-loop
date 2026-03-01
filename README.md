@@ -148,6 +148,123 @@ Session 3: "Let's finish the deploy"
 
 ---
 
+## 👁️ See It In Action
+
+These are **real outputs** from a production system managing 380K+ messages across 42 sessions/day.
+
+### Context Windows — What Your Agent Sees Every 15 Minutes
+
+```
+$ memory-loop run context-windows
+
+📡 Scanning sessions...
+
+# Context Windows — Auto-Generated
+Last updated: 2026-03-01 22:30 IST
+
+## 🔴 LAST 3 HOURS
+Sessions: 8 | Messages: 353 | Mode: 💭 thinking
+
+### Topics
+- clawdbot (38x)
+- queued (36x)
+- users (34x)
+- findings (28x)
+- agent (24x)
+
+## 🟡 LAST 24 HOURS
+Sessions: 43 | Messages: 476 | Mode: 💭 thinking
+
+## 🔵 LAST WEEK
+Sessions: 337 | Messages: 1991 | Mode: 🎭 conducting
+
+✅ Written to memory/context-windows-current.md
+```
+
+### Staleness Sweep — What Your Agent Catches Weekly
+
+```
+$ memory-loop sweep
+
+🧹 STATE.json Sweep — 2026-03-01 22:30 IST
+==================================================
+
+📊 Summary:
+  active: 12
+  done: 7
+  stale: 8
+  waiting: 1
+  archived: 3
+  TOTAL: 31
+
+⚠️ Newly stale items (3):
+  🔴 t025: Closing the Circle thesis site — deploy and polish
+  🔴 t004: Film pilot videos — start with #31, #25, #09
+  🔴 t022: Positioning plan execution — Week 1 actions
+
+🔥 Active high-priority:
+  → t033: Brain MCP open-source launch — research + packaging
+  → t005: EpicAgents/Persofi — client work + hour tracking
+
+💤 Dormant threads:
+  → th001: Cognitive Sovereignty / SMAT Thesis Site (9 days)
+  → th004: Content pipeline — videos + Substack + arXiv (19 days)
+```
+
+> Every stale item, dormant thread, and priority conflict is surfaced automatically. Your agent never "forgets" an open task — it just tells you what slipped.
+
+---
+
+## 🌍 Real World: MordeNews Daily Podcast
+
+`agent-memory-loop` powers a fully automated daily podcast that scans YouTube, transcribes, summarizes, and generates audio — all running as cron jobs on a single Mac.
+
+```mermaid
+graph TD
+    subgraph SCAN["☀️ 6:00 AM — News Scan"]
+        YT["YouTube Channels<br/><i>AI Explained · Lex Fridman<br/>Diary of a CEO · WorldofAI</i>"]
+        YT --> DL["yt-dlp download"]
+    end
+
+    subgraph PROCESS["🎙️ 7:00 AM — Podcast Build"]
+        DL --> STT["parakeet-mlx<br/><i>Local STT · 25 languages</i>"]
+        STT --> SUM["Gemini Flash<br/><i>Summarize + highlights</i>"]
+        SUM --> TTS["kokoro-mlx<br/><i>Local TTS · 3 sec/segment</i>"]
+        TTS --> MIX["ffmpeg merge<br/><i>Intro + segments + outro</i>"]
+    end
+
+    subgraph DELIVER["📬 Delivered"]
+        MIX --> SUP["Supabase Storage"]
+        SUP --> SITE["mordenews.com"]
+        SUP --> DISC["Discord #mordenews"]
+        SUP --> QIN["QinBot push"]
+    end
+
+    style SCAN fill:#fff8e1,stroke:#d29922,color:#1a1a1a
+    style PROCESS fill:#e8f0fe,stroke:#58a6ff,color:#1a1a1a
+    style DELIVER fill:#f0fff4,stroke:#3fb950,color:#1a1a1a
+```
+
+**Real run from production:**
+
+```
+📰 MordeNews Daily — 2026-03-01
+
+Sources: AI Explained, WorldofAI, Diary of a CEO, Lex Fridman
+Segments: 70 | Duration: 13:33 | Size: 7.5 MB
+
+Pipeline: yt-dlp → parakeet-mlx → Gemini Flash → kokoro-mlx → ffmpeg
+Total time: ~10 minutes (fully local except Gemini summarization)
+```
+
+One of the podcast segments captured this moment — WorldofAI covering the agent framework this system runs on:
+
+> *"Recently, we have all seen the internet go crazy over the autonomous AI agent that lives within your computer called Clodbot, which has now already been rebranded to Open Clod... Like here, for example, where Clodbot literally builds an entire app just by typing a prompt through WhatsApp."*
+
+The entire pipeline — scan, transcribe, summarize, speak, deliver — runs unattended as cron jobs. No human intervention. That's `agent-memory-loop` in action.
+
+---
+
 ## 🚀 Quick Start
 
 ### Install
