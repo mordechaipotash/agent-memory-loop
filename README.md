@@ -547,6 +547,40 @@ The tools here are extracted from 12 months of production use. They're simple (b
 
 ---
 
+## 🔗 Part of the AI Agent Ecosystem
+
+agent-memory-loop is the maintenance layer in a modular AI agent stack — keeping memory fresh, scheduling tasks, and ensuring nothing falls through the cracks.
+
+```mermaid
+graph TD
+    AML[🔄 agent-memory-loop] -->|keeps fresh| BM[🧠 brain-mcp]
+    AML -->|schedules| MN[🎙️ mordenews]
+    AML -->|schedules| LV[🔊 local-voice-ai]
+    BM -->|feeds context to| AML
+    XS[🔍 x-search] -->|research for| MN
+    MN -->|uses| LV
+    LV -->|voices for| QB[📱 qinbot]
+    BM -->|renders to| BC[🖥️ brain-canvas]
+
+    style AML fill:#f0fff4,stroke:#3fb950,color:#1a1a1a
+    style BM fill:#e8f0fe,stroke:#58a6ff,color:#1a1a1a
+    style MN fill:#9775fa,stroke:#7950f2,color:#fff
+    style LV fill:#fff8e1,stroke:#d29922,color:#1a1a1a
+    style XS fill:#ff6b6b,stroke:#e03131,color:#fff
+    style QB fill:#f3e8ff,stroke:#8b5cf6,color:#1a1a1a
+    style BC fill:#fff0f0,stroke:#f85149,color:#1a1a1a
+```
+
+| Repo | What | Stars |
+|------|------|-------|
+| [brain-mcp](https://github.com/mordechaipotash/brain-mcp) | Memory — 25 MCP tools, cognitive prosthetic | ⭐ 17 |
+| [brain-canvas](https://github.com/mordechaipotash/brain-canvas) | Visual display for any LLM | ⭐ 11 |
+| [local-voice-ai](https://github.com/mordechaipotash/local-voice-ai) | Voice — Kokoro TTS + Parakeet STT, zero cloud | ⭐ 1 |
+| **[agent-memory-loop](https://github.com/mordechaipotash/agent-memory-loop)** | **This repo** — cron, context windows, STATE.json | ⭐ 1 |
+| [x-search](https://github.com/mordechaipotash/x-search) | Search X/Twitter via Grok, no API key | 🆕 |
+| [mordenews](https://github.com/mordechaipotash/mordenews) | Automated daily AI podcast | 🆕 |
+| [qinbot](https://github.com/mordechaipotash/qinbot) | AI on a dumb phone — no browser, no apps | ⭐ 1 |
+
 ## 📄 License
 
 MIT — use it, fork it, make your agents remember.
