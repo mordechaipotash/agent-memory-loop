@@ -535,6 +535,47 @@ ruff check .
 
 ---
 
+## 🐚 Shell Scripts (Standalone)
+
+The `examples/` directory includes the **original bash scripts** that this Python package was built from. They've been running in production for months and work without any pip dependencies.
+
+| File | What It Does | Python Equivalent |
+|------|-------------|-------------------|
+| [`generate-context-window.sh`](examples/generate-context-window.sh) | Scans JSONL sessions, extracts topics/mode/decisions, writes `context-windows-current.md` | `memory-loop run context-windows` |
+| [`state-sweep.sh`](examples/state-sweep.sh) | Finds stale items in STATE.json past their threshold | `memory-loop sweep` |
+| [`consolidation-prompt.md`](examples/consolidation-prompt.md) | LLM prompt template for nightly STATE.json consolidation | `memory-loop run consolidation` |
+
+### When to use the shell scripts
+
+- **Quick setup** — copy one script + add a cron job, done in 30 seconds
+- **Understanding the code** — read 80 lines of bash instead of navigating a Python package
+- **Minimal environments** — servers where you don't want pip, venvs, or Python dependencies
+- **Customization** — fork a single file, no package structure to worry about
+
+### Configuration
+
+All scripts use environment variables with sensible defaults:
+
+```bash
+export AGENT_WORKSPACE="$HOME/my-project"        # Default: $HOME/agent-workspace
+export AGENT_SESSIONS_DIR="$HOME/.my-agent/sessions"  # Default: $HOME/.clawdbot/agents/main/sessions
+export STATE_JSON_PATH="$AGENT_WORKSPACE/STATE.json"   # Default: $AGENT_WORKSPACE/STATE.json
+```
+
+### Cron setup (shell scripts only)
+
+```bash
+# crontab -e
+*/15 * * * *  /path/to/examples/generate-context-window.sh 3h
+*/15 * * * *  /path/to/examples/generate-context-window.sh 24h
+*/15 * * * *  /path/to/examples/generate-context-window.sh week
+0 10 * * 0    /path/to/examples/state-sweep.sh
+```
+
+For nightly consolidation, feed `consolidation-prompt.md` to your LLM agent (via Clawdbot cron, Claude CLI, or any agent framework).
+
+---
+
 ## 📖 Philosophy
 
 This project exists because I run a personal AI agent 24/7 and got tired of it waking up with amnesia every session.
