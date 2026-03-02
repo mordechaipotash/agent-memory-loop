@@ -2,7 +2,9 @@
 
 **Your AI agent has amnesia. This fixes it.**
 
-<video src="https://github.com/mordechaipotash/agent-memory-loop/raw/main/assets/demo.mp4" width="100%" autoplay loop muted playsinline></video>
+[![Watch the demo](assets/thumbnail.png)](https://github.com/mordechaipotash/agent-memory-loop/raw/main/assets/demo.mp4)
+
+> 🎬 *Click to watch the demo video (agent-memory-loop)*
 
 ---
 
