@@ -6,7 +6,7 @@
   <img src="assets/demo-autoplay.gif" alt="agent-memory-loop Demo" width="640"/>
 </p>
 
-<p align="center"><i>⬆️ Auto-playing preview — <a href="https://github.com/mordechaipotash/agent-memory-loop/raw/main/assets/demo.mp4">click here for full video with audio</a></i></p>
+<p align="center"><i>⬆️ Auto-playing preview — <a href="https://github.com/user-attachments/assets/419ad595-b913-4075-8d77-41663a487756">click here for full video with audio</a></i></p>
 
 
 https://github.com/user-attachments/assets/419ad595-b913-4075-8d77-41663a487756
