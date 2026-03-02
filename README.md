@@ -2,6 +2,12 @@
 
 **Your AI agent has amnesia. This fixes it.**
 
+<p align="center">
+  <img src="assets/demo-autoplay.gif" alt="agent-memory-loop Demo" width="640"/>
+</p>
+
+<p align="center"><i>⬆️ Auto-playing preview — <a href="https://github.com/mordechaipotash/agent-memory-loop/raw/main/assets/demo.mp4">click here for full video with audio</a></i></p>
+
 Every AI agent wakes up with zero memory. Your carefully crafted context? Gone after a restart. The decision you made yesterday? Forgotten. The task you started last week? What task?
 
 `agent-memory-loop` is the maintenance layer that makes stateless LLMs feel stateful. A set of cron jobs and scripts that automatically build **short-term → medium-term → long-term memory** — so your agent always knows where it left off.
